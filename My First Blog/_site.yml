@@ -1,12 +1,21 @@
-name: "My First Blog"
-title: "My First Blog"
+name: "Yiru Wang's Blog"
+title: "Yiru Wang's Blog"
 description: |
-  My First Blog
-output_dir: "_site"
+  Yiru Wang's Blog
 navbar:
+  logo:
+    image: images/logo.png
+    href: https://www.rstudio.com
+  search: true
   right:
     - text: "Home"
       href: index.html
+    - text: "Posts"
+      href: Posts.html
     - text: "About"
       href: about.html
-output: distill::distill_article
+    - icon: fab fa-github
+      href: https://github.com/etc5523-2021/blog-wyrbbd.git
+output: 
+  distill::distill_article:
+    css: styles.css

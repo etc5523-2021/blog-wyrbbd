@@ -1,5 +1,18 @@
 ---
-title: "My First Blog"
+title: "Yiru Wang"
 site: distill::distill_website
-listing: posts
+image: "me.jpeg"
+links:
+  - label: LinkedIn
+    url: "https://linkedin.com/"
+  - label: Twitter
+    url: "https://twitter.com/"
+  - label: GitHub
+    url: "https://github.com/wyrbbd"
+  - label: Email
+    url: "ywan0553@student.monash.edu"
+output:
+  postcards::jolla
 ---
+ 
+I am a Master of Business Analytics student from Monash University, living in Hebei Province, China. This is the first blog I have posted and I hope you enjoy it.

@@ -1,9 +1,19 @@
 ---
-title: "About this blog"
-description: |
-  Some additional details about the blog
+title: "Yiru Wang, Master"
 ---
+### Blog
+ 
+This is a private blog site arranged for the ETC5523 course. I will be uploading two blogs on this site. In the first blog, I will give a brief overview of the Covid-19 virus in Russia.
+ <br>
+ 
+### Professionalism
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+I am a first year MSc Business Analytics student from Monash University with an undergraduate degree from the Hebei University of Science and Technology.
+<br>
+
+### Private
+
+In my spare time, I likes to read books or play sky. sky is a game I really like and recommend to all of you haha!
+<br>
+
+![sky](https://raw.githubusercontent.com/wyrbbd/image/main/sky.JPG)

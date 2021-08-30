@@ -1,0 +1,85 @@
+---
+title: "Russian COVID-19"
+description: |
+  What is the status of the epidemic and the progress of the vaccine in Russia, as the world struggles with the development of New Coronary Pneumonia?
+author:
+  - name: Yiru Wang 
+    url: https://example.com/norajones
+date: 08-27-2021
+output:
+  distill::distill_article:
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(DT)
+library(png)
+library(kableExtra)
+```
+
+![image from https://www.csis.org/analysis/russias-response-covid-19](https://raw.githubusercontent.com/wyrbbd/image/main/Russia.png)
+
+## Data description
+
+In this blog, I will use one dataset, `owid-covid-data.csv` to explore the development of covid-19 in Russia. This data from [our world data website](https://ourworldindata.org/coronavirus).
+
+The `owid-covid-data.csv` shows the daily development of new coronary pneumonia worldwide, including cases, deaths, vaccine numbers and other relevant data. After cleaning, only part of the data for Russia is shown. The detail of each variable shows below.
+
+```{r data discription,echo=FALSE,message=FALSE,warning=FALSE}
+description <- data.frame(Variable = c("date","total_cases","new_cases","total_cases_per_million","total_deaths","new_deaths","total_tests","total_tests_per_thousand","total_vaccinations","people_fully_vaccinated"),
+                          Class = c("date", "double", "double", "double","double","double","double","double","double","double"),
+                          Description = c("Date of observation","Total confirmed cases of COVID-19","New confirmed cases of COVID-19","Total confirmed cases of COVID-19 per 1,000,000 people","Total deaths attributed to COVID-19","	New deaths attributed to COVID-19","Total tests for COVID-19","Total tests for COVID-19 per 1,000 people","	Total number of COVID-19 vaccination doses administered","Total number of people who received all doses prescribed by the vaccination protocol"))
+ knitr::kable(description, booktabs = TRUE,
+  caption = "Detail of each variable")%>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+```{r}
+world_covid19 <- readr::read_csv('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv')
+```
+
+```{r Russia}
+Russia <- world_covid19%>%
+  filter(location == 'Russia')%>%
+  select(date,total_cases,new_cases,total_cases_per_million,total_deaths,new_deaths)
+```
+## Exploratory data
+
+The following information on COVID-19 in Russia is updated daily.
+
+```{r}
+datatable(Russia ,filter = 'top' ,
+          options = list(pageLength = 5,dom = 'Bfrtip',
+                         buttons = c ('copy','csv','excel','pdf','print')),
+          class = 'hover',
+          caption = 'Daily updates on cases and death-related information',
+          extensions = 'Buttons')
+
+```
+
+```{r}
+Russia_test<-  world_covid19%>%
+  filter(location == 'Russia')%>%
+  select(date,total_tests,total_tests_per_thousand,total_vaccinations,people_fully_vaccinated)
+
+```
+
+```{r}
+datatable(Russia_test ,filter = 'top' ,
+          options = list(pageLength = 5,dom = 'Bfrtip',
+                         buttons = c ('copy','csv','excel','pdf','print')),
+          class = 'hover',
+          caption = 'Daily updated information on tests and vaccines',
+          extensions = 'Buttons')
+
+```
+
+## Data Story
+
+
+
+
+

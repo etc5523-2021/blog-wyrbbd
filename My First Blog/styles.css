@@ -1,0 +1,39 @@
+ul > li::marker {
+    font-weight: 700;
+    font-size: 1.125em;
+}
+
+.distill-site-nav {
+  color: 	#D87093; 
+  background-color: #FFB6C1;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.distill-site-footer {
+  --text-color:       rgba(255, 255, 255, 0.8);
+  --text-size:        10px;
+  --hover-color:      white;
+  --bkgd-color:       #FFB6C1;
+}
+
+body {
+  background-color: #FFE4E1;
+}
+
+/* Import fonts from Google's API */
+@import url('https://fonts.googleapis.com/css2?family=Lato');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Mono');
+
+/* Use specific font in the body of the text */
+html, body, p {
+  
+  font-family: 'Lato', sans-serif;
+  font-weight: 200;
+  line-height: 1.3; 
+  font-size: 1.0em;
+  color: #808080;
+  font-style: normal;
+  
+}
+
