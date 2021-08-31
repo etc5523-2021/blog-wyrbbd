@@ -1,16 +1,16 @@
 # My Blog
 
 
-This is the blog of [FILL].
+This is the blog of [Yiru Wang].
 The URL of this blog is [FILL].
 
 ## Blog Post 1
 
 This assessment is due Fri Sep 3 2021 11.55PM AEST.
 
-My selected country is [FILL].
+My selected country is [Russia].
 
-The relevant blog post for this assessment is in [FILL].html
+The relevant blog post for this assessment is in [covid-19-in-russia].html
 
 - [ ] Selected a country
 - [ ] Website with R markdown 
