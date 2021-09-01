@@ -2,7 +2,7 @@
 
 
 This is the blog of [Yiru Wang].
-The URL of this blog is [FILL].
+The URL of this blog is [https://etc5523-wyrbbd-blog.netlify.app/].
 
 ## Blog Post 1
 
