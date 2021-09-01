@@ -27,7 +27,7 @@ In this blog, I will use one dataset, `owid-covid-data.csv` to explore the devel
 
 The `owid-covid-data.csv` shows the daily development of new coronary pneumonia worldwide, including cases, deaths, vaccine numbers and other relevant data. After cleaning, only part of the data for Russia is shown. The detail of each variable shows below.
 
-```{r data discription,echo=FALSE,message=FALSE,warning=FALSE}
+```{r echo=FALSE,message=FALSE,warning=FALSE}
 description <- data.frame(Variable = c("date","total_cases","new_cases","total_cases_per_million","total_deaths","new_deaths","total_tests","total_tests_per_thousand","total_vaccinations","people_fully_vaccinated"),
                           Class = c("date", "double", "double", "double","double","double","double","double","double","double"),
                           Description = c("Date of observation","Total confirmed cases of COVID-19","New confirmed cases of COVID-19","Total confirmed cases of COVID-19 per 1,000,000 people","Total deaths attributed to COVID-19","	New deaths attributed to COVID-19","Total tests for COVID-19","Total tests for COVID-19 per 1,000 people","	Total number of COVID-19 vaccination doses administered","Total number of people who received all doses prescribed by the vaccination protocol"))
@@ -46,6 +46,7 @@ Russia <- world_covid19%>%
   filter(location == 'Russia')%>%
   select(date,total_cases,new_cases,total_cases_per_million,total_deaths,new_deaths)
 ```
+
 ## Exploratory data
 
 The following information on COVID-19 in Russia is updated daily.
@@ -82,7 +83,7 @@ datatable(Russia_test ,filter = 'top' ,
 ```{r}
 Russia_full <- world_covid19%>%
   filter(location == 'Russia')%>%
-  filter(date == '2020-01-31'|date =='2020-02-28'|date =='2020-03-31'|date =='2020-04-30'|date =='2020-05-31'|date =='2020-06-30'|date =='2020-07-31'|date =='2020-08-31'|date =='2020-09-30'|date =='2020-10-31'|date =='2020-11-30'|date =='2020-12-31'|date =='2021-01-31'|date =='2021-02-28'|date =='2021-03-31'|date =='2021-04-30'|date =='2021-05-31'|date =='2021-06-30'|date =='2021-07-31'|date =='2021-08-30')%>%
+  filter(date == '2020-01-31'|date =='2020-02-28'|date =='2020-03-31'|date =='2020-04-30'|date =='2020-05-31'|date =='2020-06-30'|date =='2020-07-31'|date =='2020-08-31'|date =='2020-09-30'|date =='2020-10-31'|date =='2020-11-30'|date =='2020-12-31'|date =='2021-01-31'|date =='2021-02-28'|date =='2021-03-31'|date =='2021-04-30'|date =='2021-05-31'|date =='2021-06-30'|date =='2021-07-31'|date =='2021-08-31')%>%
   select(date,total_cases,total_cases_per_million,total_deaths,total_deaths_per_million,people_fully_vaccinated_per_hundred)%>%
   rename(cases_per_million = "total_cases_per_million",deaths_per_million="total_deaths_per_million",fully_vaccinated_per_hundred = "people_fully_vaccinated_per_hundred")
 knitr::kable(Russia_full, booktabs = TRUE,
@@ -94,9 +95,9 @@ The table above shows the monthly changes in the development of the epidemic in 
 
 We can see that since April 2020 the epidemic in Russia has started to spiral out of control, with monthly increases in the tens of thousands. Since the beginning of April 2020, the epidemic in Russia has started to get out of hand, with monthly increases in the tens of thousands. 
 
-By August 2021, the total number of confirmed cases in Russia reached a staggering 6803323, with 46,626 confirmed cases per million people, a confirmation rate of 4.66%.The number of deaths due to Neoconiosis in Russia is also alarming. As of August 2021, the cumulative number of deaths in Russia reached 179,233, with 1,228 deaths per million.
+By August 2021, the total number of confirmed cases in Russia reached a staggering **6803323**, with **46,626** confirmed cases per million people, a confirmation rate of **4.66%**.The number of deaths due to Neoconiosis in Russia is also alarming. As of August 2021, the cumulative number of deaths in Russia reached **179,233**, with **1,228** deaths per million.
 
-So what is the progress of the vaccine in Russia? As you can see the current progress of vaccine rollout in Russia is not very fast and as of August this year, the complete vaccination rate per 100 people was only 17.33%.I believe that one of the reasons for the poor control of the outbreak in Russia is the poor progress of the vaccine. The crude oil vaccine still offers some protection, despite the emergence of new and novel coronaviruses.
+So, how is the vaccine progressing in Russia? As you can see, vaccine rollout in Russia is not progressing very quickly at the moment, with a complete vaccination rate of only **25%** per 100 people as of August this year, and that's after accelerating the rate, which was only **17%** per 100 people in Russia back in July. I believe that one of the reasons for the poor control of the epidemic in Russia is the poor progress of the vaccine, but at today's rate of progress, vaccination progress will advance significantly.
 
 The reasons for the lack of vaccine rollout are surprising. According to [theconversation website](https://theconversation.com/russias-covid-19-response-slowed-by-population-reluctant-to-take-domestic-vaccine-165925), the government's unfavourable rollout is one reason, and another reason lies in the public's distrust of the government and the medical establishment.
 
