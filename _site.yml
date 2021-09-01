@@ -2,6 +2,7 @@ name: "Yiru Wang's Blog"
 title: "Yiru Wang's Blog"
 description: |
   Yiru Wang's Blog
+output_dir: "docs"
 navbar:
   search: true
   right:
@@ -17,4 +18,6 @@ navbar:
       href: https://www.rstudio.com
 output: 
   distill::distill_article:
+    include:
+      after_body: _footer.html
     css: styles.css

@@ -19,11 +19,23 @@ library(png)
 library(kableExtra)
 ```
 
+![image from https://montessori-ami.org/countries/russia](https://raw.githubusercontent.com/wyrbbd/image/main/russia.png)
+
+# Interesting facts about Russia
+
+1.Russia's geopolitical conditions were inherently flawed and vulnerable to squeezes from both East and West. Russia therefore had an inherent urge to expand its territory and to extend its strategic buffer, and after centuries of territorial expansion, Russia became the largest country in the world in terms of land area. It was also because of the strategic depth of its vast territory, and the cold that others could not resist, that Russia defeated two powerful enemies, the Napoleonic and Nazi Empires.
+
+2. With a divorce rate of 51% in 2019, Russia has one of the highest divorce rates in the world. Russia has one of the easiest divorce procedures in the world, with couples only having to go to the registry office to get their marriage dissolved.
+
+The above news is from [Sohu](https://www.sohu.com/a/357668751_100098218).
+
+# What is the status of the epidemic in Russia?
+
 ![image from https://www.csis.org/analysis/russias-response-covid-19](https://raw.githubusercontent.com/wyrbbd/image/main/Russia.png)
 
 ## Data description
 
-In this blog, I will use one dataset, `owid-covid-data.csv` to explore the development of covid-19 in Russia. This data from [our world data website](https://ourworldindata.org/coronavirus).
+In this blog, I will use one dataset, `owid-covid-data.csv` to explore the development of covid-19 in Russia. This data from [our world data website](https://ourworldindata.org/explorers/coronavirus-data-explorer).
 
 The `owid-covid-data.csv` shows the daily development of new coronary pneumonia worldwide, including cases, deaths, vaccine numbers and other relevant data. After cleaning, only part of the data for Russia is shown. The detail of each variable shows below.
 
@@ -101,5 +113,36 @@ So, how is the vaccine progressing in Russia? As you can see, vaccine rollout in
 
 The reasons for the lack of vaccine rollout are surprising. According to [theconversation website](https://theconversation.com/russias-covid-19-response-slowed-by-population-reluctant-to-take-domestic-vaccine-165925), the government's unfavourable rollout is one reason, and another reason lies in the public's distrust of the government and the medical establishment.
 
+# Reference
 
+**Image**
 
+Association Montessori Internationale. 2021. Russia. [online] Available at: <https://montessori-ami.org/countries/russia> [Accessed 1 September 2021].
+
+Csis.org. 2021. Russia’s Response to Covid-19. [online] Available at: <https://www.csis.org/analysis/russias-response-covid-19> [Accessed 1 September 2021].
+
+**Data**
+
+Our World in Data. 2021. COVID-19 Data Explorer. [online] Available at: <https://ourworldindata.org/explorers/coronavirus-data-explorer> [Accessed 1 September 2021].
+
+**Textual references**
+
+Sohu.com. 2021. 趣谈俄罗斯是一个什么样的国家_普京. [online] Available at: <https://www.sohu.com/a/357668751_100098218> [Accessed 1 September 2021].
+
+The Conversation. 2021. Russia's COVID-19 response slowed by population reluctant to take domestic vaccine. [online] Available at: <https://theconversation.com/russias-covid-19-response-slowed-by-population-reluctant-to-take-domestic-vaccine-165925> [Accessed 1 September 2021].
+
+**Package**
+
+Hao Zhu (2021). kableExtra: Construct Complex Table with 'kable' and
+  Pipe Syntax. R package version 1.3.4.
+  https://CRAN.R-project.org/package=kableExtra
+
+Simon Urbanek (2013). png: Read and write PNG images. R package
+  version 0.1-7. https://CRAN.R-project.org/package=png
+
+Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
+  Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+
+Yihui Xie, Joe Cheng and Xianying Tan (2021). DT: A Wrapper of the
+  JavaScript Library 'DataTables'. R package version 0.18.
+  https://CRAN.R-project.org/package=DT
