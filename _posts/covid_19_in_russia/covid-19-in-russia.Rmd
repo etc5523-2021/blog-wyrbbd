@@ -23,7 +23,7 @@ library(kableExtra)
 
 # Interesting facts about Russia
 
-1.Russia's geopolitical conditions were inherently flawed and vulnerable to squeezes from both East and West. Russia therefore had an inherent urge to expand its territory and to extend its strategic buffer, and after centuries of territorial expansion, Russia became the largest country in the world in terms of land area. It was also because of the strategic depth of its vast territory, and the cold that others could not resist, that Russia defeated two powerful enemies, the Napoleonic and Nazi Empires.
+1. Russia's geopolitical conditions were inherently flawed and vulnerable to squeezes from both East and West. Russia therefore had an inherent urge to expand its territory and to extend its strategic buffer, and after centuries of territorial expansion, Russia became the largest country in the world in terms of land area. It was also because of the strategic depth of its vast territory, and the cold that others could not resist, that Russia defeated two powerful enemies, the Napoleonic and Nazi Empires.
 
 2. With a divorce rate of 51% in 2019, Russia has one of the highest divorce rates in the world. Russia has one of the easiest divorce procedures in the world, with couples only having to go to the registry office to get their marriage dissolved.
 
