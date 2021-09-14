@@ -1,0 +1,130 @@
+---
+title: "COVID-19 in South Korea"
+description: |
+  A short description of the post.
+author:
+  - name: Yiru Wang
+  - date: 09-13-2021
+categories:
+  - Covid-19
+  - Vaccines
+output:
+  distill::distill_article:
+    self_contained: false
+    toc: true
+    toc_float: true
+    code_folding: true
+    includes:
+       in_header: heading.html
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(scipen=200)
+library(tidyverse)
+library(gganimate)
+library(plotly)
+library(grid)
+library(lubridate)
+library(dplyr)
+library(kableExtra)
+```
+
+# Data description
+
+```{r}
+world_covid19 <- readr::read_csv('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv')
+world1_covid19<- world_covid19%>%
+  select("iso_code","location","date","total_cases","new_cases","new_cases_smoothed","total_cases_per_million","total_deaths","new_deaths","new_deaths_smoothed","total_tests","new_tests_smoothed","total_tests_per_thousand","total_vaccinations","new_vaccinations_smoothed","people_fully_vaccinated")%>%
+  filter(date == '2020-01-31'|date =='2020-02-28'|date =='2020-03-31'|date =='2020-04-30'|date =='2020-05-31'|date =='2020-06-30'|date =='2020-07-31'|date =='2020-08-31'|date =='2020-09-30'|date =='2020-10-31'|date =='2020-11-30'|date =='2020-12-31'|date =='2021-01-31'|date =='2021-02-28'|date =='2021-03-31'|date =='2021-04-30'|date =='2021-05-31'|date =='2021-06-30'|date =='2021-07-31'|date =='2021-08-31')%>%
+  filter(!location == "World")%>%
+  filter(!location == "Asia")%>%
+  filter(!location == "Europe")%>%
+  filter(!location == "North America")%>%
+  filter(!location == "South America")%>%
+  filter(!location == "European Union")%>%
+  mutate(date = as.character(date))%>%
+  mutate(total_cases = as.integer(total_cases))
+head(world1_covid19)
+```
+
+```{r}
+description <- data.frame(Variable = c("iso_code","location","date","total_cases","total_deaths","total_tests","total_vaccinations","people_fully_vaccinated"),
+                          Class = c("character","character","date", "double", "double", "double","double","double"),
+                          Description = c("	ISO 3166-1 alpha-3 – three-letter country codes","Geographical location","Date of observation","Total confirmed cases of COVID-19","Total deaths attributed to COVID-19","Total tests for COVID-19","Total number of COVID-19 vaccination doses administered","Total number of people who received all doses prescribed by the vaccination protocol"))
+ knitr::kable(description, booktabs = TRUE,
+  caption = "Detail of each variable")%>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+
+```{r}
+fig <- world1_covid19 %>%
+  plot_ly(frame = ~date, 
+          type='choropleth', 
+          locations=world1_covid19$iso_code,   
+          z=world1_covid19$total_cases, 
+            zmin = 0,
+            zmax = 500000,
+            text=world1_covid19$location, 
+            color= ~'tolal_cases',
+            colorscale = "Electric")%>%
+  layout(geo = list(scope = 'asia'),title = "Number of confirmed cases of New Coronary Pneumonia in Asia")
+fig
+```
+
+```{r}
+fig2 <- world1_covid19 %>%
+  plot_ly(frame = ~date, 
+          type='choropleth', 
+          locations=world1_covid19$iso_code,   
+          z=world1_covid19$total_deaths, 
+            zmin = 0,
+            zmax = 10000,
+            text=world1_covid19$location, 
+            color= ~'tolal_deaths',
+            colorscale = "Electric")%>%
+  layout(geo = list(scope = 'asia'),title = "Deaths from New Coronary Pneumonia in Asia")
+fig2
+```
+
+```{r}
+korea<-world_covid19%>%
+  filter(location == "South Korea")%>%
+  filter(!is.na(total_cases))
+```
+
+```{r}
+ggplotly(korea%>%
+  ggplot(aes(date,total_cases))+
+    geom_col(fill = "pink")+
+  geom_line(color = "red")+
+  ggtitle("Daily Case Change in Korea"))
+```
+
+```{r}
+ggplotly(korea%>%
+  ggplot(aes(date,total_deaths))+
+    geom_col(fill = "blue")+
+  geom_line(color = "darkblue")+
+  ggtitle("Daily Case Change in Korea"))
+```
+
+```{r}
+ggplotly(korea %>%
+  filter(!is.na(total_tests))%>%
+  ggplot()+
+  geom_line(aes(date,total_tests),color = "skyblue"))
+```
+
+```{r}
+ggplotly(korea %>%
+  ggplot()+
+  geom_area(aes(date,people_vaccinated),fill = "skyblue")+
+  geom_area(aes(date,people_fully_vaccinated),fill = "darkblue")+
+  geom_line(aes(date,people_vaccinated),color = "blue")+
+  geom_line(aes(date,people_fully_vaccinated),color = "black"))
+```
+

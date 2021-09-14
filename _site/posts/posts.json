@@ -1,5 +1,29 @@
 [
   {
+    "path": "posts/2021-09-13-south-korea/",
+    "title": "COVID-19 in South Korea",
+    "description": "A short description of the post.",
+    "author": [
+      {
+        "name": "Yiru Wang",
+        "url": {}
+      },
+      {
+        "name": "",
+        "url": {}
+      }
+    ],
+    "date": "2021-09-14",
+    "categories": [
+      "Covid-19",
+      "Vaccines"
+    ],
+    "contents": "\n      \n        \n      \n    \n  ",
+    "preview": {},
+    "last_modified": "2021-09-14T23:59:06+08:00",
+    "input_file": "south-korea.knit.md"
+  },
+  {
     "path": "posts/covid_19_in_russia/",
     "title": "Russian COVID-19",
     "description": "What is the status of the epidemic and the progress of the vaccine in Russia, as the world struggles with the development of New Coronary Pneumonia?",
