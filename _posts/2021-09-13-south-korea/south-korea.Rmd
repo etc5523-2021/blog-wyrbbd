@@ -173,7 +173,7 @@ ggplotly(korea %>%
   filter(!is.na(total_tests))%>%
   ggplot()+
   geom_line(aes(date,total_tests),color = "skyblue")+
-  ggtitle("Daily Case Change in Korea")+
+  ggtitle("COVID-19 test status in Korea")+
    theme(panel.background = element_rect(fill ="#FFE4E1")))
 ```
 
@@ -188,7 +188,7 @@ ggplotly(korea %>%
   geom_area(aes(date,people_fully_vaccinated),fill = "#9F88FF")+
   geom_line(aes(date,people_vaccinated),color = "#9999FF")+
   geom_line(aes(date,people_fully_vaccinated),color = "#9955FF")+
-  ggtitle("Daily Case Change in Korea")+
+  ggtitle("Vaccine situation in Korea")+
    theme(panel.background = element_rect(fill ="#FFE4E1")))
 ```
 
