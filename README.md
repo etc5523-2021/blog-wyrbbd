@@ -10,7 +10,7 @@ This assessment is due Fri Sep 3 2021 11.55PM AEST.
 
 My selected country is [Russia].
 
-The relevant blog post for this assessment is in [covid-19-in-russia].html
+The relevant blog post for this assessment is in https://etc5523-wyrbbd-blog.netlify.app/posts/covid_19_in_russia/
 
 - [ ] Selected a country
 - [ ] Website with R markdown 
@@ -28,7 +28,7 @@ This assessment is due Fri Sep 17 2021 11.55PM AEST.
 
 My selected country is [FILL].
 
-The relevant blog post for this assessment is in [FILL].html
+The relevant blog post for this assessment is in https://etc5523-wyrbbd-blog.netlify.app/posts/2021-09-13-south-korea/l
 
 - [ ] Selected a new country
 - [ ] Data Story 1
