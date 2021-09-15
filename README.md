@@ -28,7 +28,7 @@ This assessment is due Fri Sep 17 2021 11.55PM AEST.
 
 My selected country is [FILL].
 
-The relevant blog post for this assessment is in https://etc5523-wyrbbd-blog.netlify.app/posts/2021-09-13-south-korea/l
+The relevant blog post for this assessment is in https://etc5523-wyrbbd-blog.netlify.app/posts/2021-09-13-south-korea/
 
 - [ ] Selected a new country
 - [ ] Data Story 1
