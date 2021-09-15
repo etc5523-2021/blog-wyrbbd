@@ -20,7 +20,7 @@ output:
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE,warning = FALSE,message = FALSE)
 options(scipen=200)
 library(tidyverse)
 library(gganimate)
@@ -29,9 +29,10 @@ library(grid)
 library(lubridate)
 library(dplyr)
 library(kableExtra)
+library(gifski)
 ```
 
-# Introduction And Motivation
+## Introduction And Motivation
 
 Korea, or the Korean peninsula, is an Asian country. Since 1945 it has been divided into two parts, which soon became two sovereign states: Korea and South Korea. South Korea consists of the Korean peninsula, the island of Jeju and several small islands off the peninsula. It is bordered by China to the northwest and Russia to the northeast. It is separated from Japan through to the east by the Korean Strait and the Sea of Japan.(Wikipedia contributors, 2021)
 
@@ -67,9 +68,10 @@ description <- data.frame(Variable = c("iso_code","location","date","total_cases
   kable_styling(bootstrap_options = c("striped", "hover"))
 ```
 
-# Data stories
+## Data stories
 
-## Outbreak status in Asia and Korea
+### Outbreak status in Asia and Korea
+
 
 ```{r}
 fig <- world1_covid19 %>%
@@ -86,6 +88,8 @@ fig <- world1_covid19 %>%
 fig
 ```
 
+The graph above shows the change in the number of confirmed cases of COVID-19 in Asia since records began, and we can see that Korea is not the worst in terms of the number of confirmed cases, which has remained within 30,000. What about the number of deaths? The graph below shows the change in the number of deaths due to COVID-19 in Asia over time.
+
 ```{r}
 fig2 <- world1_covid19 %>%
   plot_ly(frame = ~date, 
@@ -101,41 +105,81 @@ fig2 <- world1_covid19 %>%
 fig2
 ```
 
+As can be seen from the chart above, the number of deaths in Korea is actually at a lower level compared to countries with large populations such as India, but the population base has an impact on our judgement. The chart below shows the number of confirmed new crowns in Korea itself over time.
+
 ```{r}
 korea<-world_covid19%>%
   filter(location == "South Korea")%>%
   filter(!is.na(total_cases))
 ```
 
-```{r}
-ggplotly(korea%>%
-  ggplot(aes(date,total_cases))+
-    geom_col(fill = "violet")+
-  geom_line(color = "purple")+
-  ggtitle("Daily Case Change in Korea")+
-   theme(panel.background = element_rect(fill ="#FFE4E1")) )
-  
-```
 
 ```{r}
-ggplotly(korea%>%
-  ggplot(aes(date,total_deaths))+
-    geom_col(fill = "powderblue")+
-  geom_line(color = "darkcyan")+
-  ggtitle("Daily Case Change in Korea")+
-   theme(panel.background = element_rect(fill ="#FFE4E1")))
+cases <- korea %>% 
+  ggplot(aes(x = date)) +
+  geom_area(aes(y = total_cases), fill = "violet")+
+  labs(x = "Date",
+       y = "Number of total cases")+
+   ggtitle("Daily Case Change in Korea")+
+   annotate("text",
+           x = as.Date("2021-02-02"),
+           y = 300000,
+           label = "total cases",
+           color=  "purple") +
+  scale_x_date(date_breaks = "90 days",date_labels = "%Y-%m-%d")+
+  theme(panel.background = element_rect(fill ="#FFE4E1"))+
+  theme(axis.text.x = element_text(angle=20, hjust = 1)) +
+  transition_reveal(date)
+
+animate(plot = cases, 
+        renderer = gifski_renderer(),
+        fps = 20)
+anim_save("cases.gif")
 ```
 
+As we can see, the epidemic situation in South Korea is becoming more and more serious, especially after July this year, and the trend of new cases is becoming more and more rapid, with more than 250,000 people diagnosed so far. What about the death toll in South Korea?
 
-## Covid-19 test and vaccination status in Korea
+```{r}
+deaths <- korea %>% 
+  ggplot(aes(x = date)) +
+  geom_area(aes(y = total_deaths), fill = "powderblue")+
+  labs(x = "Date",
+       y = "Number of total deaths")+
+   ggtitle("Daily deaths Change in Korea")+
+   annotate("text",
+           x = as.Date("2021-02-02"),
+           y = 2380,
+           label = "total deaths",
+           color=  "darkcyan") +
+  scale_x_date(date_breaks = "90 days",date_labels = "%Y-%m-%d")+
+  theme(axis.text.x = element_text(angle=20, hjust = 1)) +
+  theme(panel.background = element_rect(fill ="#FFE4E1"))+
+  transition_reveal(date)
+
+animate(plot = deaths, 
+        renderer = gifski_renderer(),
+        fps = 20)
+anim_save("deaths.gif")
+```
+
+The graph above shows the daily changing death toll in South Korea, and we can see that the rate of increase in deaths in South Korea has a significant acceleration from December 2020 to February 2021, before levelling off again. But overall it is in a constant state of growth with no clear signs of slowing down and the number of deaths has now exceeded.
+
+### Covid-19 test and vaccination status in Korea
+
+We already know the status of the epidemic in South Korea, so how is the Korean government responding to it? The chart below shows the number of COVID-19 tests in South Korea.
 
 ```{r}
 ggplotly(korea %>%
   filter(!is.na(total_tests))%>%
   ggplot()+
   geom_line(aes(date,total_tests),color = "skyblue")+
+  ggtitle("Daily Case Change in Korea")+
    theme(panel.background = element_rect(fill ="#FFE4E1")))
 ```
+
+We can see that the government has been active in testing and the number of tests has accelerated significantly since December 2020, corresponding to the outbreak in December 2020 mentioned above which shows that the government is actively responding to the outbreak.
+
+Despite the increased number of tests, it is the vaccine that is the most powerful weapon in the fight against the epidemic. What is the situation with vaccines in Korea?
 
 ```{r}
 ggplotly(korea %>%
@@ -144,15 +188,21 @@ ggplotly(korea %>%
   geom_area(aes(date,people_fully_vaccinated),fill = "#9F88FF")+
   geom_line(aes(date,people_vaccinated),color = "#9999FF")+
   geom_line(aes(date,people_fully_vaccinated),color = "#9955FF")+
+  ggtitle("Daily Case Change in Korea")+
    theme(panel.background = element_rect(fill ="#FFE4E1")))
 ```
 
-# Reference
-## Textual references
+The graph above shows the vaccination situation in Korea and we can see that vaccination in Korea started in February 2021 with slow progress in the early stages and accelerated rapidly after May 2021, with over 20 million people fully vaccinated as of September 13, 2021.
+
+In comparison to what has been mentioned before, we can see that the increase in cases and deaths has slowed down significantly since the vaccination started. The acceleration of the increase in cases at a later stage is, I believe, the result of the new virus Delta.
+
+## Reference
+
+### Textual references
 
 Wikipedia contributors. (2021, September 14). Korea. Wikipedia. https://en.wikipedia.org/wiki/Korea
 
-## Package
+### Packages
 
 C. Sievert. Interactive Web-Based Data Visualization with R, plotly, and shiny. Chapman and
   Hall/CRC Florida, 2020.
@@ -175,6 +225,6 @@ Thomas Lin Pedersen and David Robinson (2020). gganimate: A Grammar of Animated 
 Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43),
   1686, https://doi.org/10.21105/joss.01686
 
-## Data source
+### Data source
 
 Our World in Data. 2021. COVID-19 Data Explorer. [online] Available at: <https://ourworldindata.org/explorers/coronavirus-data-explorer> [Accessed 10 September 2021].
