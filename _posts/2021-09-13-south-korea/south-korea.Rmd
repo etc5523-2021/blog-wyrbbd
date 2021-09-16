@@ -38,7 +38,7 @@ Korea, or the Korean peninsula, is an Asian country. Since 1945 it has been divi
 
 China, Japan and Korea are often mentioned together. As a Chinese, I am curious about the development of the epidemic in neighbouring countries, so let's explore together next.
 
-# Data description
+## Data description
 
 In this blog, I will use one dataset, `owid-covid-data.csv` to explore the development of covid-19 in Russia. This data from [our world data website](https://ourworldindata.org/explorers/coronavirus-data-explorer).
 
